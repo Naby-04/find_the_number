@@ -3,6 +3,7 @@ const Form = document.getElementById("form");
 const choiceInput = document.getElementById("choice");
 const alertZone = document.getElementById("alertZone");
 const choosedvalue = document.getElementById("choosedvalue");
+const message = document.getElementById("message");
 const choosedFalsevalue = document.getElementById("choosedFalsevalue");
 const resultFalse = document.getElementById("resultFalse");
 const resultTrue = document.getElementById("resultTrue");
@@ -46,6 +47,7 @@ Form?.addEventListener("submit", function (e) {
   // if number unvalid
   if (choiceInput.value != nombreMystere) {
     numberunvalid();
+    info(nombreMystere);
   }
   // diminution chance left
   chancesLeft();
@@ -72,7 +74,16 @@ function chancesLeft() {
 function resetValue() {
   choiceInput.value = "";
 }
-// function reinitialiser
+// function pour informer l'utilisateur
+function info(nombreMystere) {
+  if (choiceInput.value > nombreMystere) {
+    message.textContent =
+      " le nombre que vous avez choisi est plus grand que le nombre à deviner.";
+  } else if (choiceInput.value < nombreMystere) {
+    message.textContent =
+      " le nombre que vous avez choisi est plus petit que le nombre à deviner.";
+  }
+}
 // Fonction pour rafraîchir la page
 function rafraichirPage() {
   location.reload();
