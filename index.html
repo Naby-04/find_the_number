@@ -28,6 +28,31 @@
     <link rel="stylesheet" href="style.css" />
     <title>Find the number</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Trouver le bon nombre</h1>
+      <hr />
+      <h3 class="text-success">
+        Vous devez trouver un nombre entre 10 et 100. Vous n'avez que
+        <span id="chanceLeft"></span> essais.
+      </h3>
+
+      <form action="#">
+        <label for="choice">Votre choix :</label>
+        <input type="text" class="border rounded" />
+        <button
+          class="d-block w-75 mx-auto mt-4 p-2 bg-primary text-light rounded"
+          type="submit"
+        >
+          Essayer
+        </button>
+      </form>
+      <div id="alertZone" class="container p-5 border mt-5 rounded">
+        <h3 id="result">
+          Non <span id="choise"></span> n'est pas le bon nombre. essayez encore.
+        </h3>
+      </div>
+    </div>
+  </body>
   <script src="main.js"></script>
 </html>
