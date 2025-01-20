@@ -30,16 +30,26 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mt-4">Trouver le bon nombre</h1>
+      <h1 class="mt-4 text-center">Trouver le bon nombre</h1>
       <hr />
-      <h3 class="text-success">
-        Vous devez trouver un nombre entre 10 et 100. Vous n'avez que
-        <span id="chanceLeft"></span> essais.
+      <h3 class="text-success text-center mb-3">
+        Vous devez trouver un nombre entre 10 et 100.
+      </h3>
+      <h3 class="text-success text-center mb-3">
+        Vous n'avez plus que
+        <span id="chanceLeft" class="text-danger"></span> essais.
       </h3>
 
-      <form action="#">
-        <label for="choice">Votre choix :</label>
-        <input type="text" class="border rounded" />
+      <form action="#" id="form">
+        <div class="input-box text-center">
+          <label for="choice">Votre choix :</label>
+          <input
+            type="number"
+            class="border rounded mx-auto"
+            id="choice"
+            required
+          />
+        </div>
         <button
           class="d-block w-75 mx-auto mt-4 p-2 bg-primary text-light rounded"
           type="submit"
@@ -48,9 +58,45 @@
         </button>
       </form>
       <div id="alertZone" class="container p-5 border mt-5 rounded">
-        <h3 id="result">
-          Non <span id="choise"></span> n'est pas le bon nombre. essayez encore.
+        <h3 id="resultFalse">
+          Non <span id="choosedFalsevalue" class="text-danger"></span> n'est pas
+          le bon nombre. essayez encore.
         </h3>
+      </div>
+      <!-- Modal Bootstrap -->
+      <div
+        class="modal fade"
+        id="successModal"
+        tabindex="-1"
+        aria-labelledby="modalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Félicitations ! 🎉</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                onclick="rafraichirPage()"
+              >
+                jouer à nouveau
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
