@@ -23,7 +23,7 @@ var setChances = 10;
 var tentatives = 0;
 chanceLeft.textContent = setChances;
 
-// Fonction pour afficher le modal avec un message dynamique
+// Fonction pour afficher le modal avec un modal if succes/fail
 function afficherModal(tentatives, nombreMystere) {
   // Modifier le contenu dynamique
   const modalMessage = document.getElementById("modalMessage");
@@ -32,7 +32,18 @@ function afficherModal(tentatives, nombreMystere) {
   } tentatives.`;
 
   // Activer le modal avec Bootstrap
-  const modal = new bootstrap.Modal(document.getElementById("successModal"));
+  const modal = new bootstrap.Modal(document.getElementById("Modal"));
+  modal.show();
+}
+function afficherModalFail() {
+  // Modifier le contenu dynamique
+  const label = document.getElementById("modalLabel");
+  label.textContent = `Dommage 🥲`;
+  const modalMessage = document.getElementById("modalMessage");
+  modalMessage.textContent = `Dommage vous avez atteint la limite de tentatives.`;
+
+  // Activer le modal avec Bootstrap
+  const modal = new bootstrap.Modal(document.getElementById("Modal"));
   modal.show();
 }
 //------------- programme
@@ -48,6 +59,10 @@ Form?.addEventListener("submit", function (e) {
   if (choiceInput.value != nombreMystere) {
     numberunvalid();
     info(nombreMystere);
+  }
+  // if limits achieved
+  if (setChances <= 0) {
+    afficherModalFail();
   }
   // diminution chance left
   chancesLeft();
